@@ -104,7 +104,7 @@ const LandingPage = () => {
           {currentPage === "ingresar" && (
             <Login setCurrentPage={setCurrentPage} />
           )}
-          {currentPage === "registrarse" && (
+          {currentPage === "registrate" && (
             <SignUp setCurrentPage={setCurrentPage} />
           )}
         </div>
