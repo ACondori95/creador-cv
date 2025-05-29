@@ -6,10 +6,11 @@ import SignUp from "./pages/Auth/SignUp";
 import Dashboard from "./pages/Home/Dashboard";
 import EditResume from "./pages/ResumeUpdate/EditResume";
 import {Toaster} from "react-hot-toast";
+import UserProvider from "./context/userContext";
 
 const App = () => {
   return (
-    <>
+    <UserProvider>
       <div>
         <Router>
           <Routes>
@@ -25,7 +26,7 @@ const App = () => {
       </div>
 
       <Toaster toastOptions={{className: "", style: {fontSize: "13px"}}} />
-    </>
+    </UserProvider>
   );
 };
 
