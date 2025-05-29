@@ -1,13 +1,17 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Input from "../../components/Inputs/Input";
 import {validateEmail} from "../../utils/helper";
+import {UserContext} from "../../context/userContext";
+import axiosInstance from "../../utils/axiosInstance";
+import {API_PATHS} from "../../utils/apiPaths";
 
 const Login = ({setCurrentPage}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
+  const {updateUser} = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -27,7 +31,25 @@ const Login = ({setCurrentPage}) => {
 
     // Login API Call
     try {
-    } catch (error) {}
+      const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
+        email,
+        password,
+      });
+
+      const {token} = response.data;
+
+      if (token) {
+        localStorage.setItem("token", token);
+        updateUser(response.data);
+        navigate("/inicio");
+      }
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("Algo salió mal. Por favor, intentá de nuevo.");
+      }
+    }
   };
 
   return (
