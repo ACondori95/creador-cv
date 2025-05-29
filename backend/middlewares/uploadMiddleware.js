@@ -1,11 +1,7 @@
 const multer = require("multer");
 
 // Configure storage
-const storage = multer.diskStorage({
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
+const storage = multer.memoryStorage();
 
 // File filter
 const fileFilter = (req, file, cb) => {

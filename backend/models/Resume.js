@@ -12,7 +12,7 @@ const ResumeSchema = new mongoose.Schema(
       designation: String,
       summary: String,
     },
-    constactInfo: {
+    contactInfo: {
       email: String,
       phone: String,
       location: String,
