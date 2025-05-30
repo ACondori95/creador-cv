@@ -51,7 +51,7 @@ const Dashboard = () => {
                 ? moment(resume.updatedAt).format("D MMM YYYY")
                 : ""
             }
-            onSelect={() => navigate(`/resume/${resume?._id}`)}
+            onSelect={() => navigate(`/cv/${resume?._id}`)}
           />
         ))}
       </div>

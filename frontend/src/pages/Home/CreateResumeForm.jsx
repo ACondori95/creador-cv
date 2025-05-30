@@ -28,7 +28,7 @@ const CreateResumeForm = () => {
       });
 
       if (response.data?._id) {
-        navigate(`/resume/${response.data?._id}`);
+        navigate(`/cv/${response.data?._id}`);
       }
     } catch (error) {
       if (error.response && error.response.data.message) {
